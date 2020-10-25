@@ -16,7 +16,11 @@ public class ConsoleVariant {
                 makeTurn(game);
             }
         }
-        System.out.println("Won: " + game.whoWon());
+        switch (game.whoWon()) {
+            case 1 -> System.out.println("Won first!");
+            case 0 -> System.out.println("It's draw");
+            case -1 -> System.out.println("Won second");
+        }
     }
 
     private static void showField(Game game) {
