@@ -6,10 +6,12 @@ public class ConsoleVariant {
     public static void main(String[] args) {
         Game game = new Game();
         while (game.isNoEnd()) {
+            System.out.println("First player is playing");
             showField(game);
             makeTurn(game);
 
             if (game.isNoEnd()) {
+                System.out.println("Second player is playing");
                 showField(game);
                 makeTurn(game);
             }
@@ -31,16 +33,23 @@ public class ConsoleVariant {
     }
 
     private static void makeTurn(Game game) {
-        System.out.print("Enter number of hole: ");
-        final Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
+        while (true) {
+            System.out.print("Enter number of hole: ");
+            final Scanner scanner = new Scanner(System.in);
+            int number = scanner.nextInt();
 
-        if (number == 2) {
-            System.out.print("Enter move vector(0 - clockwise, other otherwise): ");
-            if (scanner.nextInt() == 0) game.setMiddleDirectionLeft();
-            else game.setMiddleDirectionRight();
+            if (number == 2) {
+                System.out.print("Enter move vector(0 - clockwise, other otherwise): ");
+                if (scanner.nextInt() == 0) game.setMiddleDirectionLeft();
+                else game.setMiddleDirectionRight();
+            }
+            try {
+                game.makeTurn(number);
+                break;
+            } catch (UnsupportedOperationException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Try again!");
+            }
         }
-
-        game.makeTurn(number);
     }
 }
