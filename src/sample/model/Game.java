@@ -8,6 +8,7 @@ public class Game {
     private int storeHouseOfSecondPlayer;
     private boolean isTurnOfSecond;
     private boolean isDirectionLeft;
+    private int blockedPit = -1;
 
     //    TODO: add rule for one stone
 //    TODO: make wins more real
@@ -28,28 +29,52 @@ public class Game {
         if (pitNumber >= 5 || pitNumber < 0)
             throw new UnsupportedOperationException("Pit number should be between 5(exclusive) and 0(inclusive)");
 
+//        choosing direction
         switch (pitNumber) {
             case 0, 1 -> isDirectionLeft = true;
             case 3, 4 -> isDirectionLeft = false;
         }
+
         int[] opponentPreviousStatusOfPits = new int[5];
         if (isTurnOfSecond) {
             pitNumber += 5;
             System.arraycopy(pits, 0, opponentPreviousStatusOfPits, 0, 5);
         } else System.arraycopy(pits, 5, opponentPreviousStatusOfPits, 0, 5);
-
-        int numberOfSeeds = pits[pitNumber];
-        if (numberOfSeeds == 0)
+        if (pitNumber == blockedPit)
+            throw new UnsupportedOperationException("This Pit is blocked");
+        if (pits[pitNumber] == 0)
             throw new UnsupportedOperationException("Your turn can not be applied to empty pit");
-        pits[pitNumber] = 0;
 
+        blockedPit = blockingVariant(pitNumber);
+        spreadSeeds(pitNumber);
+        if (blockedPit == -1) {
+            checkOfValidWinMoments(opponentPreviousStatusOfPits);
+        }
+        isTurnOfSecond = !isTurnOfSecond;
+    }
+
+    private void spreadSeeds(int pitNumber) {
+        int numberOfSeeds = pits[pitNumber];
+        pits[pitNumber] = 0;
         for (int i = 0; i < numberOfSeeds; i++) {
             if (isDirectionLeft) pitNumber = pitNumber == 0 ? 9 : pitNumber - 1;
             else pitNumber = (pitNumber + 1) % 10;
             pits[pitNumber]++;
         }
-        checkOfValidWinMoments(opponentPreviousStatusOfPits);
-        isTurnOfSecond = !isTurnOfSecond;
+    }
+
+    public int blockingVariant(int pitNumber) {
+        if (pits[pitNumber] == 1) {
+            switch (pitNumber) {
+                case 0, 4, 5, 9 -> {
+                    if (isDirectionLeft) pitNumber = pitNumber == 0 ? 9 : pitNumber - 1;
+                    else pitNumber = (pitNumber + 1) % 10;
+                    if (pits[pitNumber] == 0)
+                        return pitNumber;
+                }
+            }
+        }
+        return -1;
     }
 
     private void checkOfValidWinMoments(int[] opponentPreviousStatusOfPits) {
