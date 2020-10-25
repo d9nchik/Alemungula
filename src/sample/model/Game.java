@@ -117,6 +117,10 @@ public class Game {
         return seedsLeft == 0 || seedsLeft == 1;
     }
 
+    public int whoWon() {
+        return Integer.compare(storeHouseOfFirstPlayer, storeHouseOfSecondPlayer);
+    }
+
     public int[] getPits() {
         return pits;
     }
