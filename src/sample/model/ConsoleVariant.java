@@ -5,15 +5,16 @@ import java.util.Scanner;
 public class ConsoleVariant {
     public static void main(String[] args) {
         Game game = new Game();
-        while (!game.isEnd()) {
+        while (game.isNoEnd()) {
             showField(game);
             makeTurn(game);
 
-            if (!game.isEnd()) {
+            if (game.isNoEnd()) {
                 showField(game);
                 makeTurn(game);
             }
         }
+        System.out.println("Won: " + game.whoWon());
     }
 
     private static void showField(Game game) {

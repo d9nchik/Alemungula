@@ -134,9 +134,18 @@ public class Game {
         return isAddedToStoreHouseOnCurrentStep;
     }
 
-    public boolean isEnd() {
-        int seedsLeft = 50 - storeHouseOfFirstPlayer - storeHouseOfSecondPlayer;
-        return seedsLeft == 0 || seedsLeft == 1;
+    public boolean isNoEnd() {
+        int start;
+        int end;
+        if (isTurnOfSecond) {
+            start = 5;
+            end = 10;
+        } else {
+            start = 0;
+            end = 5;
+        }
+        for (int i = start; i < end; i++) if (pits[i] != 0 && i != blockedPit) return true;
+        return false;
     }
 
     public int whoWon() {
