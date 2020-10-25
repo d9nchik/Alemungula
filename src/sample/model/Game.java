@@ -27,10 +27,8 @@ public class Game {
             throw new UnsupportedOperationException("Pit number should be between 5(exclusive) and 0(inclusive)");
 
         switch (pitNumber) {
-            case 0, 1:
-                isDirectionLeft = true;
-            case 3, 4:
-                isDirectionLeft = false;
+            case 0, 1 -> isDirectionLeft = true;
+            case 3, 4 -> isDirectionLeft = false;
         }
         int[] opponentPreviousStatusOfPits = new int[5];
         if (isTurnOfSecond) {
@@ -42,9 +40,8 @@ public class Game {
         pits[pitNumber] = 0;
 
         for (int i = 0; i < numberOfSeeds; i++) {
-            if (isDirectionLeft) pitNumber--;
-            else pitNumber++;
-            pitNumber %= 10;
+            if (isDirectionLeft) pitNumber = pitNumber == 0 ? 9 : pitNumber - 1;
+            else pitNumber = (pitNumber + 1) % 10;
             pits[pitNumber]++;
         }
         checkOfValidWinMoments(opponentPreviousStatusOfPits);
