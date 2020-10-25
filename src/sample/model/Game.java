@@ -112,6 +112,11 @@ public class Game {
         return isAddedToStoreHouseOnCurrentStep;
     }
 
+    public boolean isEnd() {
+        int seedsLeft = 50 - storeHouseOfFirstPlayer - storeHouseOfSecondPlayer;
+        return seedsLeft == 0 || seedsLeft == 1;
+    }
+
     public int[] getPits() {
         return pits;
     }
