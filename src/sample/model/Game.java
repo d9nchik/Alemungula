@@ -4,18 +4,14 @@ import java.util.Arrays;
 
 public class Game {
     private final int[] pits;
-    private final String nameOfFirstPlayer;
-    private final String nameOfSecondPlayer;
     private int storeHouseOfFirstPlayer;
     private int storeHouseOfSecondPlayer;
     private boolean isTurnOfSecond;
     private boolean isDirectionLeft;
 
-    public Game(String nameOfFirstPlayer, String nameOfSecondPlayer) {
+    public Game() {
         this.pits = new int[10];
         Arrays.fill(pits, 5);
-        this.nameOfFirstPlayer = nameOfFirstPlayer;
-        this.nameOfSecondPlayer = nameOfSecondPlayer;
     }
 
     public void setMiddleDirectionLeft() {
