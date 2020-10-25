@@ -52,14 +52,14 @@ public class Game {
         boolean addedToStoreHousePrevious = false;
         if (isTurnOfSecond) {
             if (isDirectionLeft) {
-                for (int i = 4; i >= 0; i--) {
+                for (int i = 0; i < 5; i++) {
                     boolean isAddedToStoreHouseOnCurrentStep = isAddedToStoreHouseOnCurrentStepForSecondPlayer(opponentPreviousStatusOfPits, i);
                     if (addedToStoreHousePrevious && !isAddedToStoreHouseOnCurrentStep)
                         return;
                     addedToStoreHousePrevious = isAddedToStoreHouseOnCurrentStep;
                 }
             } else {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 4; i >= 0; i--) {
                     boolean isAddedToStoreHouseOnCurrentStep = isAddedToStoreHouseOnCurrentStepForSecondPlayer(opponentPreviousStatusOfPits, i);
                     if (addedToStoreHousePrevious && !isAddedToStoreHouseOnCurrentStep)
                         return;
@@ -68,14 +68,14 @@ public class Game {
             }
         } else {
             if (isDirectionLeft) {
-                for (int i = 9; i >= 5; i--) {
+                for (int i = 5; i < 10; i++) {
                     boolean isAddedToStoreHouseOnCurrentStep = isAddedToStoreHouseOnCurrentStepForFirstPlayer(opponentPreviousStatusOfPits, i);
                     if (addedToStoreHousePrevious && !isAddedToStoreHouseOnCurrentStep)
                         return;
                     addedToStoreHousePrevious = isAddedToStoreHouseOnCurrentStep;
                 }
             } else {
-                for (int i = 5; i < 10; i++) {
+                for (int i = 9; i >= 5; i--) {
                     boolean isAddedToStoreHouseOnCurrentStep = isAddedToStoreHouseOnCurrentStepForFirstPlayer(opponentPreviousStatusOfPits, i);
                     if (addedToStoreHousePrevious && !isAddedToStoreHouseOnCurrentStep)
                         return;
