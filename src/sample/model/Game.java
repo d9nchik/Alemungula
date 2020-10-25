@@ -9,6 +9,8 @@ public class Game {
     private boolean isTurnOfSecond;
     private boolean isDirectionLeft;
 
+    //    TODO: add rule for one stone
+//    TODO: make wins more real
     public Game() {
         this.pits = new int[10];
         Arrays.fill(pits, 5);
@@ -37,6 +39,8 @@ public class Game {
         } else System.arraycopy(pits, 5, opponentPreviousStatusOfPits, 0, 5);
 
         int numberOfSeeds = pits[pitNumber];
+        if (numberOfSeeds == 0)
+            throw new UnsupportedOperationException("Your turn can not be applied to empty pit");
         pits[pitNumber] = 0;
 
         for (int i = 0; i < numberOfSeeds; i++) {
