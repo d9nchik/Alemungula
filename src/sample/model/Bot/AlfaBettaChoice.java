@@ -24,13 +24,13 @@ public class AlfaBettaChoice {
         return gameStatus.getStoreHouseOfSecondPlayer() - gameStatus.getStoreHouseOfFirstPlayer();
     }
 
-    public static int bestStep(Game gameStatus, int recursionDeep) {
+    public static void makeBestStep(Game gameStatus, int recursionDeep) {
         Integer best = null;
         int choice = -1;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Game gameStatusOnStep = (Game) gameStatus.clone();
             try {
-                gameStatusOnStep.makeTurn(i);
+                makeTurn(i, gameStatusOnStep);
                 AlfaBettaChoice alfaBettaChoice = new AlfaBettaChoice(recursionDeep - 1, gameStatusOnStep, best);
 
                 if (best == null || alfaBettaChoice.getPrice() > best) {
@@ -40,15 +40,26 @@ public class AlfaBettaChoice {
             } catch (UnsupportedOperationException ignored) {
             }
         }
-        return choice;
+        makeTurn(choice, gameStatus);
+    }
+
+    private static void makeTurn(int i, Game gameStatusOnStep) {
+        if (i == 2) {
+            gameStatusOnStep.setMiddleDirectionRight();
+        }
+        if (i == 5) {
+            gameStatusOnStep.setMiddleDirectionLeft();
+            gameStatusOnStep.makeTurn(2);
+        } else
+            gameStatusOnStep.makeTurn(i);
     }
 
     private void search() {
         if (recursionDeep == 0) return;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Game gameStatusOnStep = (Game) gameStatus.clone();
             try {
-                gameStatusOnStep.makeTurn(i);
+                makeTurn(i, gameStatusOnStep);
                 int price;
                 if (!gameStatusOnStep.isNoEnd()) {
                     price = heuristic(gameStatus);

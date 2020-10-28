@@ -15,7 +15,7 @@ public class ConsoleVariant {
             if (game.isNoEnd()) {
                 System.out.println("Second player is playing");
                 showField(game);
-                game.makeTurn(AlfaBettaChoice.bestStep(game, 7));
+                AlfaBettaChoice.makeBestStep(game, 7);
             }
         }
         switch (game.whoWon()) {
