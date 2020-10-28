@@ -1,5 +1,7 @@
 package sample.model;
 
+import sample.model.Bot.AlfaBettaChoice;
+
 import java.util.Scanner;
 
 public class ConsoleVariant {
@@ -13,7 +15,7 @@ public class ConsoleVariant {
             if (game.isNoEnd()) {
                 System.out.println("Second player is playing");
                 showField(game);
-                makeTurn(game);
+                game.makeTurn(AlfaBettaChoice.bestStep(game, 7));
             }
         }
         switch (game.whoWon()) {

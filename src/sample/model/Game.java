@@ -2,16 +2,14 @@ package sample.model;
 
 import java.util.Arrays;
 
-public class Game {
-    private final int[] pits;
+public class Game implements Cloneable {
+    private int[] pits;
     private int storeHouseOfFirstPlayer;
     private int storeHouseOfSecondPlayer;
     private boolean isTurnOfSecond;
     private boolean isDirectionLeft;
     private int blockedPit = -1;
 
-    //    TODO: add rule for one stone
-//    TODO: make wins more real
     public Game() {
         this.pits = new int[10];
         Arrays.fill(pits, 5);
@@ -166,5 +164,17 @@ public class Game {
 
     public boolean isTurnOfSecond() {
         return isTurnOfSecond;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            final Game clone = (Game) super.clone();
+            clone.pits = Arrays.copyOf(clone.pits, clone.pits.length);
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
