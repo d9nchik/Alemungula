@@ -19,6 +19,8 @@ public class Controller {
     @FXML
     private Text status;
 
+    private int hardLevel = 5;
+
     @FXML
     protected void initialize() {
         HOLES[0] = hole1;
@@ -73,7 +75,7 @@ public class Controller {
                     showField();
                     if (!game.isNoEnd()) return;
                     new Thread(() -> {
-                        AlfaBettaChoice.makeBestStep(game, 7);
+                        AlfaBettaChoice.makeBestStep(game, hardLevel);
                         Platform.runLater(() -> {
                             status.setText("Turn of player");
                             showField();
@@ -95,5 +97,23 @@ public class Controller {
     @FXML
     private void closeWindow() {
         ((Stage) (status.getScene().getWindow())).close();
+    }
+
+    @FXML
+    private void setHard() {
+        hardLevel = 7;
+        status.setText("Difficulty set to hard");
+    }
+
+    @FXML
+    private void setMedium() {
+        hardLevel = 5;
+        status.setText("Difficulty set to medium");
+    }
+
+    @FXML
+    private void setEasy() {
+        hardLevel = 3;
+        status.setText("Difficulty set to easy");
     }
 }

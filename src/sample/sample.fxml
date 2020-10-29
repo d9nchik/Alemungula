@@ -16,14 +16,15 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
                 <Menu mnemonicParsing="false" text="Difficulty">
-                    <RadioMenuItem mnemonicParsing="false" text="Easy">
+                    <RadioMenuItem mnemonicParsing="false" onAction="#setEasy" text="Easy">
                         <toggleGroup>
                             <ToggleGroup fx:id="difficultyToggle"/>
                         </toggleGroup>
                     </RadioMenuItem>
-                    <RadioMenuItem mnemonicParsing="false" selected="true" text="Medium"
+                    <RadioMenuItem mnemonicParsing="false" onAction="#setMedium" selected="true" text="Medium"
                                    toggleGroup="$difficultyToggle"/>
-                    <RadioMenuItem mnemonicParsing="false" text="Hard" toggleGroup="$difficultyToggle"/>
+                    <RadioMenuItem mnemonicParsing="false" onAction="#setHard" text="Hard"
+                                   toggleGroup="$difficultyToggle"/>
                 </Menu>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
