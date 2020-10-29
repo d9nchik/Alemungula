@@ -15,6 +15,9 @@ public class ConsoleVariant {
             if (game.isNoEnd()) {
                 System.out.println("Second player is playing");
                 showField(game);
+                // 7 - hard
+                // 5 - medium
+                // 3 - easy
                 AlfaBettaChoice.makeBestStep(game, 7);
             }
         }
