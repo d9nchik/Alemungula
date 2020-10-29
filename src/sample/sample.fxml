@@ -12,7 +12,7 @@
         <MenuBar BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Game">
                 <MenuItem mnemonicParsing="false" onAction="#newGame" text="New"/>
-                <MenuItem mnemonicParsing="false" text="Close"/>
+                <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Close"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
                 <Menu mnemonicParsing="false" text="Difficulty">

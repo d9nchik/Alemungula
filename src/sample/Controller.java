@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import sample.model.Bot.AlfaBettaChoice;
 import sample.model.Game;
 
@@ -89,5 +90,10 @@ public class Controller {
         game.newGame();
         showField();
         status.setText("");
+    }
+
+    @FXML
+    private void closeWindow() {
+        ((Stage) (status.getScene().getWindow())).close();
     }
 }
