@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -65,22 +66,11 @@ public class Controller {
             Text node = (Text) source;
             for (int i = 0; i < 5; i++) {
                 if (HOLES[i] == node) {
-                    try {
-                        game.makeTurn(i);
-                    } catch (UnsupportedOperationException ex) {
-                        status.setText(ex.getMessage());
+                    if (i == 2) {
+                        status.setText("Use arrows to set direction for middle");
                         return;
                     }
-                    status.setText("Turn of bot");
-                    showField();
-                    if (!game.isNoEnd()) return;
-                    new Thread(() -> {
-                        AlfaBettaChoice.makeBestStep(game, hardLevel);
-                        Platform.runLater(() -> {
-                            status.setText("Turn of player");
-                            showField();
-                        });
-                    }).start();
+                    makeTurn(i);
                     break;
                 }
             }
@@ -115,5 +105,42 @@ public class Controller {
     private void setEasy() {
         hardLevel = 3;
         status.setText("Difficulty set to easy");
+    }
+
+    @FXML
+    private void middleDirection(KeyEvent event) {
+        switch (event.getCode()) {
+            case RIGHT -> {
+                status.setText("Counter clockwise direction");
+                game.setMiddleDirectionRight();
+            }
+            case LEFT -> {
+                status.setText("Clockwise direction");
+                game.setMiddleDirectionLeft();
+            }
+            default -> {
+                return;
+            }
+        }
+        makeTurn(2);
+    }
+
+    private void makeTurn(int numberOfHole) {
+        try {
+            game.makeTurn(numberOfHole);
+        } catch (UnsupportedOperationException ex) {
+            status.setText(ex.getMessage());
+            return;
+        }
+        status.setText("Turn of bot");
+        showField();
+        if (!game.isNoEnd()) return;
+        new Thread(() -> {
+            AlfaBettaChoice.makeBestStep(game, hardLevel);
+            Platform.runLater(() -> {
+                status.setText("Turn of player");
+                showField();
+            });
+        }).start();
     }
 }

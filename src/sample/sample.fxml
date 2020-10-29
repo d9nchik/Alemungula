@@ -5,9 +5,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2"
-            fx:controller="sample.Controller">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#middleDirection" prefHeight="638.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2" fx:controller="sample.Controller">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Game">
