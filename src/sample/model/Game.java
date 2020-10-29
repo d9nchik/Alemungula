@@ -61,7 +61,7 @@ public class Game implements Cloneable {
         }
     }
 
-    public int blockingVariant(int pitNumber) {
+    private int blockingVariant(int pitNumber) {
         if (pits[pitNumber] == 1) {
             switch (pitNumber) {
                 case 0, 4, 5, 9 -> {
@@ -176,5 +176,13 @@ public class Game implements Cloneable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void newGame() {
+        Arrays.fill(pits, 5);
+        storeHouseOfSecondPlayer = 0;
+        storeHouseOfFirstPlayer = 0;
+        blockedPit = -1;
+        isTurnOfSecond = false;
     }
 }

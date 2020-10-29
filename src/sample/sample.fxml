@@ -6,13 +6,12 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2"
             fx:controller="sample.Controller">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="Game">
-                <MenuItem mnemonicParsing="false" text="New"/>
+                <MenuItem mnemonicParsing="false" onAction="#newGame" text="New"/>
                 <MenuItem mnemonicParsing="false" text="Close"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
@@ -227,7 +226,8 @@
                                 </RadialGradient>
                             </fill>
                         </Circle>
-                        <Text fx:id="hole1" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                        <Text fx:id="hole1" onMouseClicked="#holeHasBeenChosen" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="5">
                             <font>
                                 <Font size="48.0"/>
                             </font>
@@ -253,7 +253,8 @@
                                 </RadialGradient>
                             </fill>
                         </Circle>
-                        <Text fx:id="hole2" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                        <Text fx:id="hole2" onMouseClicked="#holeHasBeenChosen" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="5">
                             <font>
                                 <Font size="48.0"/>
                             </font>
@@ -279,7 +280,8 @@
                                 </RadialGradient>
                             </fill>
                         </Circle>
-                        <Text fx:id="hole3" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                        <Text fx:id="hole3" onMouseClicked="#holeHasBeenChosen" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="5">
                             <font>
                                 <Font size="48.0"/>
                             </font>
@@ -305,7 +307,8 @@
                                 </RadialGradient>
                             </fill>
                         </Circle>
-                        <Text fx:id="hole4" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                        <Text fx:id="hole4" onMouseClicked="#holeHasBeenChosen" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="5">
                             <font>
                                 <Font size="48.0"/>
                             </font>
@@ -331,7 +334,8 @@
                                 </RadialGradient>
                             </fill>
                         </Circle>
-                        <Text fx:id="hole5" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                        <Text fx:id="hole5" onMouseClicked="#holeHasBeenChosen" strokeType="OUTSIDE" strokeWidth="0.0"
+                              text="5">
                             <font>
                                 <Font size="48.0"/>
                             </font>
@@ -367,4 +371,11 @@
             </center>
         </BorderPane>
     </center>
+    <bottom>
+        <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Text>
+    </bottom>
 </BorderPane>
