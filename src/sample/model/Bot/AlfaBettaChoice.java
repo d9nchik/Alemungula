@@ -60,10 +60,11 @@ public class AlfaBettaChoice {
                 if (!gameStatusOnStep.isNoEnd()) {
                     price = heuristic(gameStatus);
                 } else {
-                    AlfaBettaChoice alfaBettaChoice = new AlfaBettaChoice(recursionDeep - 1, gameStatusOnStep, currentBest);
+                    AlfaBettaChoice alfaBettaChoice = new AlfaBettaChoice(recursionDeep - 1,
+                            gameStatusOnStep, currentBest);
                     price = alfaBettaChoice.getPrice();
                 }
-                //TODO: optimize
+
                 if (currentBest == null) {
                     currentBest = price;
                 }

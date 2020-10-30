@@ -52,9 +52,9 @@ public class Controller {
         if (!game.isNoEnd()) {
             String statusString;
             switch (game.whoWon()) {
-                case 1 -> statusString = "Won first!";
+                case 1 -> statusString = "You won!";
                 case 0 -> statusString = "It's draw";
-                case -1 -> statusString = "Won second";
+                case -1 -> statusString = "Bot won(";
                 default -> statusString = "";
             }
             status.setText(statusString);
@@ -161,7 +161,7 @@ public class Controller {
             try {
                 Stage stage = new Stage();
                 Parent about = FXMLLoader.load(getClass().getResource("about.fxml"));
-                stage.setTitle("Alemungula");
+                stage.setTitle("Alemungula - About");
                 stage.setScene(new Scene(about));
                 stage.show();
             } catch (IOException e) {
