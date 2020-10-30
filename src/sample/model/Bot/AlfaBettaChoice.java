@@ -8,10 +8,6 @@ public class AlfaBettaChoice {
     private final Integer best;
     private Integer currentBest;
 
-    public AlfaBettaChoice(int recursionDeep, Game gameStatus) {
-        this(recursionDeep, gameStatus, null);
-    }
-
     public AlfaBettaChoice(int recursionDeep, Game gameStatus, Integer best) {
         this.recursionDeep = recursionDeep;
         this.gameStatus = gameStatus;
