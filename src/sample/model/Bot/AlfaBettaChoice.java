@@ -69,7 +69,8 @@ public class AlfaBettaChoice {
                     currentBest = price;
                 }
                 if (!gameStatus.isTurnOfSecond()) {
-                    if (best != null && price > best) {
+                    // if price is smaller for opponent then best we should not check other variants
+                    if (best != null && price < best) {
                         currentBest = price;
                         return;
                     }
