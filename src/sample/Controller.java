@@ -2,6 +2,9 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -9,6 +12,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.model.Bot.AlfaBettaChoice;
 import sample.model.Game;
+
+import java.io.IOException;
 
 public class Controller {
     private final Text[] HOLES = new Text[10];
@@ -136,11 +141,32 @@ public class Controller {
         showField();
         if (!game.isNoEnd()) return;
         new Thread(() -> {
+            try {
+                //2 seconds to watch your decision
+                Thread.sleep(2_000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             AlfaBettaChoice.makeBestStep(game, hardLevel);
             Platform.runLater(() -> {
                 status.setText("Turn of player");
                 showField();
             });
         }).start();
+    }
+
+    @FXML
+    private void showAbout() {
+        new Thread(() -> Platform.runLater(() -> {
+            try {
+                Stage stage = new Stage();
+                Parent about = FXMLLoader.load(getClass().getResource("about.fxml"));
+                stage.setTitle("Alemungula");
+                stage.setScene(new Scene(about));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        })).start();
     }
 }
