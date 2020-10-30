@@ -22,6 +22,11 @@ public class AboutController {
         openUrl("https://www.iggamecenter.com/info/ru/alemungula.html");
     }
 
+    @FXML
+    private void openLicense() {
+        openUrl("https://github.com/d9nchik/Alemungula/blob/master/LICENSE");
+    }
+
     private void openUrl(String URL) {
         Runtime rt = Runtime.getRuntime();
         try {

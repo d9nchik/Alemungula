@@ -42,7 +42,7 @@
             </Text>
             <Hyperlink onAction="#openRepository" text="Github" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
             <Hyperlink onAction="#openRules" text="Alemungula Rules" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-            <Hyperlink text="MIT License" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Hyperlink onAction="#openLicense" text="MIT License" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game rules:" GridPane.rowIndex="1">
                 <font>
                     <Font size="18.0"/>
