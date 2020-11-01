@@ -66,9 +66,7 @@ public class Controller {
 
     @FXML
     private void holeHasBeenChosen(MouseEvent event) {
-        if (!game.isNoEnd()) {
-            return;
-        }
+        if (!game.isNoEnd() || game.isTurnOfSecond()) return;
         Object source = event.getSource();
         if (source instanceof Circle) {
             Node parent = ((Circle) source).getParent();
