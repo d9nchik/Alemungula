@@ -3,11 +3,14 @@ package sample;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.model.Bot.AlfaBettaChoice;
@@ -66,7 +69,14 @@ public class Controller {
         if (!game.isNoEnd()) {
             return;
         }
-        final Object source = event.getSource();
+        Object source = event.getSource();
+        if (source instanceof Circle) {
+            Node parent = ((Circle) source).getParent();
+            if (parent instanceof StackPane) {
+                source = ((StackPane) parent).getChildren().stream().filter((node -> node instanceof Text)).findFirst()
+                        .orElseThrow();
+            }
+        }
         if (source instanceof Text) {
             Text node = (Text) source;
             for (int i = 0; i < 5; i++) {

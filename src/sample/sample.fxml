@@ -208,7 +208,7 @@
                         </Text>
                     </StackPane>
                     <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
-                        <Circle radius="79.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle onMouseClicked="#holeHasBeenChosen" radius="79.0" stroke="BLACK" strokeType="INSIDE">
                             <fill>
                                 <RadialGradient centerX="0.48314606741573035" centerY="0.5">
                                     <stops>
@@ -235,7 +235,7 @@
                         </Text>
                     </StackPane>
                     <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                        <Circle radius="79.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle onMouseClicked="#holeHasBeenChosen" radius="79.0" stroke="BLACK" strokeType="INSIDE">
                             <fill>
                                 <RadialGradient centerX="0.48314606741573035" centerY="0.5">
                                     <stops>
@@ -262,7 +262,7 @@
                         </Text>
                     </StackPane>
                     <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                        <Circle radius="79.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle onMouseClicked="#holeHasBeenChosen" radius="79.0" stroke="BLACK" strokeType="INSIDE">
                             <fill>
                                 <RadialGradient centerX="0.48314606741573035" centerY="0.5">
                                     <stops>
@@ -289,7 +289,7 @@
                         </Text>
                     </StackPane>
                     <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                        <Circle radius="79.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle onMouseClicked="#holeHasBeenChosen" radius="79.0" stroke="BLACK" strokeType="INSIDE">
                             <fill>
                                 <RadialGradient centerX="0.48314606741573035" centerY="0.5">
                                     <stops>
@@ -316,7 +316,7 @@
                         </Text>
                     </StackPane>
                     <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                        <Circle radius="79.0" stroke="BLACK" strokeType="INSIDE">
+                        <Circle onMouseClicked="#holeHasBeenChosen" radius="79.0" stroke="BLACK" strokeType="INSIDE">
                             <fill>
                                 <RadialGradient centerX="0.48314606741573035" centerY="0.5">
                                     <stops>
