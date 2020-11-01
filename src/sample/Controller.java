@@ -66,7 +66,6 @@ public class Controller {
 
     @FXML
     private void holeHasBeenChosen(MouseEvent event) {
-        if (!game.isNoEnd() || game.isTurnOfSecond()) return;
         Object source = event.getSource();
         if (source instanceof Circle) {
             Node parent = ((Circle) source).getParent();
@@ -139,6 +138,7 @@ public class Controller {
     }
 
     private void makeTurn(int numberOfHole) {
+        if (!game.isNoEnd() || game.isTurnOfSecond()) return;
         try {
             game.makeTurn(numberOfHole);
         } catch (UnsupportedOperationException ex) {
